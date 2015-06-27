@@ -22,11 +22,11 @@ r = his(r);
 g = his(g);
 
 function genr(n){
-  return gen(r, "f", n);
+  return gen1(r, "f", n);
 }
 
 function geng(n){
-  return gen(g, "g", n);
+  return gen1(g, "g", n);
 }
 
 //out($.dsp($.map(g, arrof("0", "100"))));

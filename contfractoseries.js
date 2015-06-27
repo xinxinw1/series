@@ -1,4 +1,5 @@
 // cont frac to series
+// current data for x/(1+x(2+x/(3+x/(4+...))))
 
 function s(n, m, r){
   if (n == "-1")return "0";
@@ -6,7 +7,7 @@ function s(n, m, r){
   return sum("1", m, function (u){
     return mul(mul(prod("1", sub(u, "1"), a),
                    prod(add(u, "2"), r, a)),
-                 s(sub(n, "1"), add(u, "1"), add(r, "1")));
+               s(sub(n, "1"), add(u, "1"), add(r, "1")));
   });
 }
 

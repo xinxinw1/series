@@ -14,7 +14,7 @@ function d(n){
 }
 
 function gend(n){
-  return gen(d, "f", n);
+  return gen1(d, "f", n);
 }
 
 d = his(d);

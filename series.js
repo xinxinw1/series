@@ -93,23 +93,24 @@ function arrof(n, m){
 function gen(f, nm, n){
   var s = nm + "\\left(x\\right)=";
   if (Number(n) >= 0){
-    s += "\\frac{" + f("0") + "}{0!}";
+    s += f("0");
     for (var i = 1; i <= Number(n); i++){
-      s += "+\\frac{" + f(String(i)) + "}{" + i + "!}x^{" + i + "}";
+      s += "+" + f(String(i)) + "x^{" + String(i) + "}";
     }
   }
   return s;
 }
 
+function gen1(f, nm, n){
+  return gen(function (i){
+    return "\\frac{" + f(i) + "}{" + i + "!}";
+  }, nm, n);
+}
+
 function gen2(f, g, nm, n){
-  var s = nm + "\\left(x\\right)=";
-  if (Number(n) >= 0){
-    s += "\\frac{" + f("0") + "}{" + g("0") + "}";
-    for (var i = 1; i <= Number(n); i++){
-      s += "+\\frac{" + f(String(i)) + "}{" + g(String(i)) + "}x^{" + i + "}";
-    }
-  }
-  return s;
+  return gen(function (i){
+    return "\\frac{" + f(i) + "}{" + g(i) + "}";
+  }, nm, n);
 }
 
 var fst = true;

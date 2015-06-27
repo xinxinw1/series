@@ -16,7 +16,7 @@ function p(n){
 }
 
 function genp(n){
-  return gen(p, "f", n);
+  return gen1(p, "f", n);
 }
 
 p = his(p);
