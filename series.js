@@ -101,16 +101,14 @@ function gen(f, nm, n){
   return s;
 }
 
-function gen1(f, nm, n){
-  return gen(function (i){
-    return "\\frac{" + f(i) + "}{" + i + "!}";
-  }, nm, n);
-}
-
 function gen2(f, g, nm, n){
   return gen(function (i){
     return "\\frac{" + f(i) + "}{" + g(i) + "}";
   }, nm, n);
+}
+
+function gen1(f, nm, n){
+  return gen2(f, function (i){return i + "!";}, nm, n);
 }
 
 var fst = true;
