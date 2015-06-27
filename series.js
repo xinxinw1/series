@@ -10,6 +10,8 @@ var neg = R.neg;
 
 var bin = R.bin;
 
+var udfp = $.udfp;
+
 function sum(fr, to, f){
   var s = "0";
   for (var i = Number(fr); i <= Number(to); i++){
@@ -24,10 +26,6 @@ function prod(fr, to, f){
     s = mul(s, f(String(i)));
   }
   return s;
-}
-
-function udfp(a){
-  return a === undefined;
 }
 
 // memoize
@@ -90,25 +88,26 @@ function arrof(n, m){
   return r;
 }
 
-function gen(f, nm, n){
+function gen(f, nm, n, sgn){
+  if (udfp(sgn))sgn = function (i){return false;};
   var s = nm + "\\left(x\\right)=";
   if (Number(n) >= 0){
-    s += f("0");
+    s += (sgn("0")?"-":"") + f("0");
     for (var i = 1; i <= Number(n); i++){
-      s += "+" + f(String(i)) + "x^{" + String(i) + "}";
+      s += (sgn(String(i))?"-":"+") + f(String(i)) + "x^{" + String(i) + "}";
     }
   }
   return s;
 }
 
-function gen2(f, g, nm, n){
+function gen2(f, g, nm, n, sgn){
   return gen(function (i){
     return "\\frac{" + f(i) + "}{" + g(i) + "}";
-  }, nm, n);
+  }, nm, n, sgn);
 }
 
-function gen1(f, nm, n){
-  return gen2(f, function (i){return i + "!";}, nm, n);
+function gen1(f, nm, n, sgn){
+  return gen2(f, function (i){return i + "!";}, nm, n, sgn);
 }
 
 var fst = true;
