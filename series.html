@@ -6,14 +6,22 @@
 <script src="lib/tools/tools.js"></script>
 <script src="lib/prec-math/prec-math.js"></script>
 <script src="series.js"></script>
-
+<style>
+#in {margin-bottom: 10px;}
+</style>
 </head>
 
 <body>
+<div id="in">
+  <select id="file">
+    <option>y2eqexy</option>
+    <option>y2eqy1pow2py</option>
+    <option>y2p2y1pyeqsinx</option>
+    <option>contfractoseries</option>
+  </select>
+  <input type="button" value="Run" onclick="fst = true; imp($('file').value + '.js')">
+</div>
 <div id="out"></div>
-<script>
-imp("eq3.js");
-</script>
 </body>
 
 </html> 
